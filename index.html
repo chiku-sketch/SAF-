@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.A.F. - Solar Air Flying Car | ArionZ Advanced Mobility</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111111;
+            --card-hover: #181818;
+            --border-color: #222222;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa8c2c;
+            --text-main: #e0e0e0;
+            --text-muted: #999999;
+            --accent-glow: rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Top Header Navigation */
+        header {
+            background: linear-gradient(to bottom, #0a0a0a, var(--bg-color));
+            text-align: center;
+            padding: 50px 20px 30px;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+        }
+
+        header h1 {
+            color: var(--gold);
+            font-size: 2.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Video Section */
+        .video-section {
+            background: var(--card-bg);
+            border: 1px solid var(--gold-dark);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .video-section h2 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid var(--border-color);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-desc {
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Navigation Tabs for Deep Documentation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Sections & Cards */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: border-color 0.3s ease;
+        }
+
+        .section-card:hover {
+            border-color: var(--gold-dark);
+        }
+
+        .section-card h3 {
+            color: var(--gold);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .sub-card {
+            background: var(--card-hover);
+            border: 1px solid var(--border-color);
+            padding: 22px;
+            border-radius: 8px;
+        }
+
+        .sub-card h4 {
+            color: var(--gold-light);
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+
+        ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* Specifications Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--card-hover);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        td:first-child {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>S.A.F. – SOLAR AIR FLYING CAR</h1>
+        <p>ArionZ Advanced Mobility | Next-Generation Personal Air Transportation</p>
+        <span class="badge">Project Status: Digital Engineering & CAD Prototyping</span>
+    </header>
+
+    <div class="main-container">
+
+        <!-- VIDEO SECTION -->
+        <div class="video-section">
+            <h2>🎥 S.A.F. Project Explainer & Visual Demonstration</h2>
+            <div class="video-container">
+                <video controls poster="">
+                    <source src="SAF.mp4" type="video/mp4">
+                    Taru browser video tag support nathi kartu. Krupaya saf_explainer.mp4 file add karo.
+                </video>
+            </div>
+            <p class="video-desc">Aa video ma S.A.F. nu aerodynamic exterior, full glass split-sliding canopy, ducted lift fans, ane AI-assisted flight modes detail ma batavela chhe.</p>
+        </div>
+
+        <!-- TABS NAVIGATION -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab(event, 'tab-overview')">1. Overview & Vision</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-design')">2. Exterior & Cabin</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-propulsion')">3. Propulsion & Energy</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-specs')">4. Technical Specifications</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-roadmap')">5. Development Roadmap</button>
+        </div>
+
+        <!-- TAB 1: OVERVIEW -->
+        <div id="tab-overview" class="tab-content active">
+            <div class="section-card">
+                <h3>Core Vision & Objectives</h3>
+                <p><strong>S.A.F. (Solar Air Flying Car)</strong> is an advanced electric vertical take-off and landing (eVTOL) vehicle designed under the ArionZ Advanced Mobility initiative. It bridges the gap between personal automotive luxury and high-performance aerospace engineering.</p>
+                <div class="grid-2">
+                    <div class="sub-card">
+                        <h4>Key Pillars</h4>
+                        <ul>
+                            <li>Solar-assisted energy integration (Obsidian-X).</li>
+                            <li>Battery-electric VTOL propulsion architecture.</li>
+                            <li>Autonomous AI flight assistance & safety monitoring.</li>
+                            <li>Lightweight carbon-fibre & titanium composites.</li>
+                        </ul>
+                    </div>
+                    <div class="sub-card">
+                        <h4>Long-Term Mission</h4>
+                        <p>To pioneer a sustainable, safe, and intelligent personal air mobility ecosystem that operates without traditional airport runways.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: DESIGN & CABIN -->
+        <div id="tab-design" class="tab-content">
+            <div class="section-card">
+                <h3>Vehicle Design & Passenger Cabin</h3>
+                <p>The vehicle features a low-profile (~1.2m height), wide aerodynamic body built to eliminate ground friction while optimizing airflow.</p>
+                <div class="grid-2">
+                    <div class="sub-card">
+                        <h4>Passenger Capacity (4-Seater)</h4>
+                        <ul>
+                            <li>1 Pilot / Driver seat with smart digital dashboard.</li>
+                            <li>3 Passenger seats in an enclosed, climate-controlled luxury cabin.</li>
+                        </ul>
+                    </div>
+                    <div class="sub-card">
+                        <h4>Glass Canopy & Landing Skids</h4>
+                        <ul>
+                            <li><strong>Full Glass Split Canopy:</strong> Center split-line roof mechanism allowing doors to slide seamlessly into the body frame.</li>
+                            <li><strong>Landing Skids:</strong> Thick (5-10cm) helicopter-style landing skids ensuring stable ground contact without wheels.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: PROPULSION & ENERGY -->
+        <div id="tab-propulsion" class="tab-content">
+            <div class="section-card">
+                <h3>Propulsion & Obsidian-X Solar System</h3>
+                <p>Advanced power distribution designed for smooth vertical lift, hovering, and horizontal cruise flight.</p>
+                <div class="grid-2">
+                    <div class="sub-card">
+                        <h4>Lift & Thrust Architecture</h4>
+                        <ul>
+                            <li><strong>4 Underbody Ducted Fans:</strong> Enclosed vertical lift units for stable hovering and VTOL transitions.</li>
+                            <li><strong>2 Rear Thrust Ducts:</strong> High-efficiency horizontal boosters for high-speed forward flight.</li>
+                        </ul>
+                    </div>
+                    <div class="sub-card">
+                        <h4>Obsidian-X Solar Roof</h4>
+                        <ul>
+                            <li>Integrated lightweight solar surface targeting 35% efficiency.</li>
+                            <li>Supplements primary battery systems and powers auxiliary electronics.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: SPECIFICATIONS -->
+        <div id="tab-specs" class="tab-content">
+            <div class="section-card">
+                <h3>Technical Parameters & Targets</h3>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Design Specification / Target</th>
+                    </tr>
+                    <tr>
+                        <td>Vehicle Type</td>
+                        <td>Electric VTOL Personal Flying Car</td>
+                    </tr>
+                    <tr>
+                        <td>Passenger Capacity</td>
+                        <td>4 Seater (2+2 Layout)</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions</td>
+                        <td>Length: ~4.6m | Width: ~2.2m | Height: ~1.2m</td>
+                    </tr>
+                    <tr>
+                        <td>Estimated Mass</td>
+                        <td>~1,300 kg (Lightweight composite structure)</td>
+                    </tr>
+                    <tr>
+                        <td>Lift Architecture</td>
+                        <td>4 Enclosed Underbody Ducted Fans</td>
+                    </tr>
+                    <tr>
+                        <td>Forward Propulsion</td>
+                        <td>2 Rear Thrust Ducts</td>
+                    </tr>
+                    <tr>
+                        <td>Energy System</td>
+                        <td>Rechargeable Battery + Obsidian-X Solar Roof</td>
+                    </tr>
+                    <tr>
+                        <td>Performance Aspirations</td>
+                        <td>Range: ~500 km | Max Speed: 250–300 km/h</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 5: ROADMAP -->
+        <div id="tab-roadmap" class="tab-content">
+            <div class="section-card">
+                <h3>Development Roadmap (6-Phase Plan)</h3>
+                <div class="grid-2">
+                    <div class="sub-card">
+                        <h4>Phase 1: Concept & CAD</h4>
+                        <p>Exterior styling, procedural 3D model generation (STL/DXF), component layout, and SolveSpace integration.</p>
+                    </div>
+                    <div class="sub-card">
+                        <h4>Phase 2: Digital Engineering</h4>
+                        <p>CFD aerodynamics analysis, structural simulation, energy modeling, and flight-control testing.</p>
+                    </div>
+                    <div class="sub-card">
+                        <h4>Phase 3: Physical Mockups</h4>
+                        <p>Scale exterior models, cabin ergonomics testing, propulsion mockups, and solar panel placement.</p>
+                    </div>
+                    <div class="sub-card">
+                        <h4>Phase 4 to 6: Flight & Commercial</h4>
+                        <p>Aerospace engineering review, certified subsystem testing, experimental aircraft trials, and commercial scaling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ArionZ Advanced Mobility. All rights reserved. Developed by Jigar Darji (ArionZ).</p>
+    </footer>
+
+    <script>
+        function switchTab(evt, tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
